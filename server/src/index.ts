@@ -7,12 +7,14 @@ import { ApolloServerPluginLandingPageGraphQLPlayground } from "apollo-server-co
 
 import { User } from "./entities/User";
 import { UserResolver } from "./resolvers/UserResolver";
+import { JobResolver } from "./resolvers/JobResolver";
+import { Job } from "./entities/Job";
 
 const main = async () => {
   const conn = await createConnection({
     type: "postgres",
     database: "workable",
-    entities: [User],
+    entities: [User, Job],
     logging: true,
     synchronize: true,
     username: "postgres",
@@ -22,9 +24,10 @@ const main = async () => {
 
   const apolloServer = new ApolloServer({
     schema: await buildSchema({
-      resolvers: [UserResolver],
+      resolvers: [UserResolver, JobResolver],
       validate: false,
     }),
+    context: ({ req, res }) => ({ req, res }),
     plugins: [ApolloServerPluginLandingPageGraphQLPlayground()],
   });
 
