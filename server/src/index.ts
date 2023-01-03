@@ -2,25 +2,16 @@ import "reflect-metadata";
 import { ApolloServer } from "apollo-server-express";
 import express, { Express, Request, Response } from "express";
 import { buildSchema } from "type-graphql";
-import { createConnection } from "typeorm";
+import { createConnection, DataSource } from "typeorm";
 import { ApolloServerPluginLandingPageGraphQLPlayground } from "apollo-server-core";
 
-import { User } from "./entities/User";
 import { UserResolver } from "./resolvers/UserResolver";
 import { JobResolver } from "./resolvers/JobResolver";
-import { Job } from "./entities/Job";
 
-const main = async () => {
-  const conn = await createConnection({
-    type: "postgres",
-    database: "workable",
-    entities: [User, Job],
-    logging: true,
-    synchronize: true,
-    username: "postgres",
-    password: "postgres",
-    port: 5432,
-  });
+import { dataSource } from "./dataSource";
+
+export const main = async () => {
+  dataSource;
 
   const apolloServer = new ApolloServer({
     schema: await buildSchema({
