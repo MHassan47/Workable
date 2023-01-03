@@ -14,6 +14,9 @@ import bcrypt from "bcryptjs";
 import { sign } from "jsonwebtoken";
 import { MyContext } from "src/MyContext";
 import { isAuth } from "../middleware/isAuth";
+import { Job } from "../entities/Job";
+
+import { dataSource } from "../dataSource";
 
 @ObjectType()
 class LoginResponse {
@@ -61,13 +64,43 @@ export class UserResolver {
 
     return {
       user: user.id,
-      accessToken: sign({ userId: user.id }, "secretkey", { expiresIn: "15m" }),
+      accessToken: sign({ userId: user.id }, "secretkey", { expiresIn: "1h" }),
     };
   }
 
-  @Query(() => String)
+  @Query(() => User, { nullable: true })
+  @UseMiddleware(isAuth)
+  async me(@Ctx() { payload }: MyContext) {
+    const user = await User.findOneBy({ id: payload?.userId });
+    return user;
+  }
+
+  @Query(() => Int)
   @UseMiddleware(isAuth)
   bye(@Ctx() { payload }: MyContext) {
-    return `user id: ${payload?.userId}`;
+    return payload?.userId;
+  }
+
+  @Mutation(() => Boolean)
+  @UseMiddleware(isAuth)
+  async saveJobPost(@Ctx() { payload }: MyContext, @Arg("jobId") id: number) {
+    try {
+      const user = await User.findOne({ where: { id: payload?.userId } });
+      const job = await Job.findOne({ where: { id: id } });
+      console.log(user);
+      if (!user || !job) {
+        throw new Error("user or job not found");
+      }
+
+      dataSource
+        .createQueryBuilder()
+        .relation(User, "job")
+        .of(payload?.userId)
+        .add(job.id);
+
+      return true;
+    } catch (err) {
+      throw new Error("failed");
+    }
   }
 }
