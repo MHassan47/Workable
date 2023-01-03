@@ -1,5 +1,13 @@
 import { Field, Int, ObjectType } from "type-graphql";
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import {
+  BaseEntity,
+  Column,
+  Entity,
+  JoinTable,
+  ManyToMany,
+  PrimaryGeneratedColumn,
+} from "typeorm";
+import { Job } from "./Job";
 @ObjectType()
 @Entity("users")
 export class User extends BaseEntity {
@@ -21,4 +29,8 @@ export class User extends BaseEntity {
 
   @Column()
   password: string;
+
+  @ManyToMany("Job", (job: Job) => job.user, { cascade: true })
+  @JoinTable()
+  job: Array<Job>;
 }
