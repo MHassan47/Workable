@@ -92,11 +92,34 @@ export class UserResolver {
         throw new Error("user or job not found");
       }
 
-      dataSource
+      await dataSource
         .createQueryBuilder()
         .relation(User, "job")
         .of(payload?.userId)
         .add(job.id);
+
+      return true;
+    } catch (err) {
+      throw new Error("failed");
+    }
+  }
+
+  @Mutation(() => Boolean)
+  @UseMiddleware(isAuth)
+  async unsaveJobPost(@Ctx() { payload }: MyContext, @Arg("jobId") id: number) {
+    try {
+      const user = await User.findOne({ where: { id: payload?.userId } });
+      const job = await Job.findOne({ where: { id: id } });
+      console.log(user);
+      if (!user || !job) {
+        throw new Error("user or job not found");
+      }
+
+      await dataSource
+        .createQueryBuilder()
+        .relation(User, "job")
+        .of(payload?.userId)
+        .remove(job.id);
 
       return true;
     } catch (err) {
