@@ -126,4 +126,18 @@ export class UserResolver {
       throw new Error("failed");
     }
   }
+
+  @Query(() => [Job])
+  @UseMiddleware(isAuth)
+  async getAllSavedJobs(@Ctx() { payload }: MyContext) {
+    try {
+      return await dataSource
+        .createQueryBuilder()
+        .relation(User, "job")
+        .of(payload?.userId)
+        .loadMany();
+    } catch (err) {
+      throw new Error("failed");
+    }
+  }
 }
