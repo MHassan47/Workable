@@ -3,7 +3,9 @@ import {
   BaseEntity,
   Column,
   Entity,
+  JoinColumn,
   ManyToMany,
+  ManyToOne,
   PrimaryGeneratedColumn,
 } from "typeorm";
 import { User } from "./User";
@@ -38,9 +40,10 @@ export class Job extends BaseEntity {
   @Field(() => String)
   location: string;
 
+  @ManyToOne(() => User, (user: User) => user.myJob, { cascade: true })
+  @JoinColumn({ name: "owner_id" })
+  creator: User;
+
   @ManyToMany(() => User, (user: User) => user.job)
   user: Array<User>;
-
-  @Column("int", { default: 0 })
-  tokenVersion: number;
 }
