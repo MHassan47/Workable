@@ -13,15 +13,10 @@ interface Job {
 const JobDetails: FC<{ job: Job }> = ({ job }) => {
   const [saveJob, { error }] = useMutation(SAVEJOB);
   const saveJobHandler = () => {
-    const token = localStorage.getItem("authorization");
+    // console.log(job.id);
     saveJob({
       variables: {
         jobId: job.id,
-        context: {
-          headers: {
-            authorization: `Bearer ${token}`,
-          },
-        },
       },
     });
 
