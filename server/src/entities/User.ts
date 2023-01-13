@@ -3,8 +3,10 @@ import {
   BaseEntity,
   Column,
   Entity,
+  JoinColumn,
   JoinTable,
   ManyToMany,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from "typeorm";
 import { Job } from "./Job";
@@ -29,6 +31,9 @@ export class User extends BaseEntity {
 
   @Column()
   password: string;
+
+  @OneToMany(() => Job, (job) => job.creator)
+  myJob: Array<Job>;
 
   @ManyToMany("Job", (job: Job) => job.user, { cascade: true })
   @JoinTable()
