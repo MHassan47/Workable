@@ -18,15 +18,15 @@ interface Props {
 }
 const JobPostings: FC<Props> = ({ jobs, setSelected, selected }) => {
   return (
-    <div className="flex w-2/3 justify-center">
-      <ul className=" bg-gray-100 h-screen w-full p-10 rounded-3xl ">
+    <div className="flex w-2/3 justify-center h-5/6">
+      <ul className=" bg-stone-300  h-full w-full p-10 rounded-3xl overflow-y-scroll overflow-x-hidden">
         {jobs.map((job: Job) => {
           return (
             <li
               key={job.id}
               onClick={() => setSelected(job)}
               className={`flex flex-row justify-between bg-white w-full px-12 py-8  mb-6 rounded-2xl  
-                bg-white-500 hover:bg-blue-00 ${
+                bg-white-500 hover:bg-blue-00 hover:shadow-lg cursor-pointer ${
                   selected && selected.id === job.id
                     ? "border-4 border-blue-400  shadow-lg"
                     : ""
