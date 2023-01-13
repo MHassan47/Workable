@@ -8,7 +8,7 @@ function Login() {
 
   const [loginUser, { error, data }] = useMutation(LOGIN, {
     onCompleted: (data) => {
-      localStorage.setItem("accessToken", data.login.accessToken);
+      localStorage.setItem("authorization", data.login.accessToken);
       localStorage.setItem("userId", data.login.user);
     },
   });
