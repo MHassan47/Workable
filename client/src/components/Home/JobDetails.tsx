@@ -31,7 +31,7 @@ const JobDetails: FC<{ job: Job }> = ({ job }) => {
   };
 
   return (
-    <div className="flex border-2 min-w-full min-h-screen">
+    <div className="flex border-2 border-zinc-400 min-w-full h-full rounded-3xl py-10">
       {!job.id ? (
         ""
       ) : (
@@ -39,8 +39,8 @@ const JobDetails: FC<{ job: Job }> = ({ job }) => {
           <div className="text-2xl font-bold text-center"> {job.company}</div>
           <h2 className="text-xl font-semibold text-center">{job.title}</h2>
           <div>{job.location}</div>
-          <label className="font-bold text-left">Description</label>
-          <div className="flex border-2 text-stone-500 text-lg w-5/6 text-center overflow-y-scroll overflow-x-hidden h-4/6">
+          <label className="font-bold">Description</label>
+          <div className="flex text-stone-500 text-lg w-5/6 text-center overflow-y-scroll overflow-x-hidden h-4/6">
             {job.description}
           </div>
 
