@@ -24,3 +24,9 @@ export const REGISTER = gql`
     )
   }
 `;
+
+export const SAVEJOB = gql`
+  mutation saveJobPost($jobId: number) {
+    saveJobPost(jobId: $jobId)
+  }
+`;
