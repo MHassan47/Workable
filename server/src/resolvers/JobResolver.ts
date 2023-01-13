@@ -54,7 +54,7 @@ export class JobResolver {
     const jobs = await Job.createQueryBuilder("job")
       .where(
         "LOWER(job.title) LIKE :searchTerm OR LOWER(job.company) LIKE :searchTerm OR LOWER(job.location) LIKE :searchTerm",
-        { searchTerm: `%${searchTerm}%` }
+        { searchTerm: `%${searchTerm.toLowerCase()}%` }
       )
       .getMany();
     return jobs;
