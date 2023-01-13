@@ -45,7 +45,7 @@ const JobPostings: FC<Props> = ({ jobs, setSelected, selected }) => {
 
               <div className="flex flex-col">
                 <div className="font-bold">
-                  {job?.salaryMinimum}k - {job?.salaryMaximum}k
+                  ${job?.salaryMinimum} - ${job?.salaryMaximum}
                 </div>
                 <div className="text-gray-400 text-center">Salary</div>
               </div>

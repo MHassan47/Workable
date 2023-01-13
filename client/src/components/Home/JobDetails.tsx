@@ -38,16 +38,15 @@ const JobDetails: FC<{ job: Job }> = ({ job }) => {
         <div className="flex flex-col justify-around items-center">
           <div className="text-2xl font-bold text-center"> {job.company}</div>
           <h2 className="text-xl font-semibold text-center">{job.title}</h2>
+          <div>{job.location}</div>
           <label className="font-bold text-left">Description</label>
           <div className="flex border-2 text-stone-500 text-lg w-5/6 text-center overflow-y-scroll overflow-x-hidden h-4/6">
             {job.description}
           </div>
-          <div>
-            <label className="font-bold text-left">Location</label>
-            <div>{job.location}</div>
-          </div>
-          <div>
-            Salary: {job.salaryMinimum}k - {job.salaryMaximum}k
+
+          <div className="font-semibold">
+            <label className="font-bold">Salary: </label>${job.salaryMinimum} -
+            ${job.salaryMaximum}
           </div>
           <div className="flex justify-center gap-x-8">
             <button
