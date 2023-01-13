@@ -10,15 +10,17 @@ interface Job {
 }
 const JobDetails: FC<{ job: Job }> = ({ job }) => {
   return (
-    <div className="flex">
+    <div className="flex border-2 min-w-full min-h-screen">
       {!job.id ? (
         ""
       ) : (
-        <div className="flex flex-col  items-center justify-between">
+        <div className="flex flex-col  ">
           <div className="text-2xl font-bold"> {job.company}</div>
           <h2>{job.title}</h2>
           <label className="font-bold">Description</label>
-          <div>{job.description}</div>
+          <div className=" text-stone-500 text-lg overflow-y-scroll overflow-x-hidden max-h-64">
+            {job.description}
+          </div>
           <div>Location: {job.location}</div>
           <div>
             Salary: {job.salaryMinimum}k - {job.salaryMaximum}k
