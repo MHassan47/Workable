@@ -24,6 +24,12 @@ const SearchBar: React.FC<Props> = ({ jobs, setJobs }) => {
     setSearchTerm(e.target.value);
   };
 
+  //   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  //     if (e.key === "Enter") {
+  //       handleSearch(e);
+  //     }
+  //   };
+
   // Function to filter the jobs based on the search term
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -34,16 +40,22 @@ const SearchBar: React.FC<Props> = ({ jobs, setJobs }) => {
   };
 
   return (
-    <div className="flex w-1/2 border-2 p-2 rounded-xl">
-      <form onSubmit={handleSearch}>
-        <input
-          type="text"
-          placeholder="Search for jobs..."
-          value={searchTerm}
-          onChange={handleChange}
-        />
-        <button type="submit">Search</button>
-      </form>
+    <div className="w-2/3 mb-6">
+      <div className="flex flex-row justify-around border-2 p-2 rounded-xl">
+        <form onSubmit={handleSearch}>
+          <input
+            type="text"
+            placeholder="Search for jobs..."
+            value={searchTerm}
+            onChange={handleChange}
+            className="outline-none"
+          />
+          <button type="submit">Search</button>
+        </form>
+      </div>
+      <div className="ml-2 mt-2">
+        {jobs.length} {jobs && jobs.length > 1 ? "results" : "result"}{" "}
+      </div>
     </div>
   );
 };
