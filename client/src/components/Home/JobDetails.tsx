@@ -56,12 +56,12 @@ const JobDetails: FC<{ job: Job }> = ({ job }) => {
             >
               Save Job
             </button>
-            {/* <button
+            <button
               // onClick={saveJobHandler}
               className=" bg-zinc-700 hover:bg-zinc-600 h-10 w-28 rounded-lg mt-10 font-semibold text-white"
             >
               Apply Now
-            </button> */}
+            </button>
           </div>
         </div>
       )}
