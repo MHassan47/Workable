@@ -13,3 +13,17 @@ export const GET_ALL_JOBS = gql`
     }
   }
 `;
+
+export const SEARCHJOBS = gql`
+  query SearchJobs($searchTerm: String!) {
+    searchJobs(searchTerm: $searchTerm) {
+      id
+      company
+      title
+      description
+      salaryMinimum
+      salaryMaximum
+      location
+    }
+  }
+`;
