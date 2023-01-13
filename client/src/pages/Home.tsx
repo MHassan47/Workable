@@ -4,6 +4,7 @@ import { GET_ALL_JOBS } from "../GraphQL/Queries";
 import JobDetails from "../components/Home/JobDetails";
 import JobPostings from "../components/Home/JobPostings";
 import SearchBar from "../components/Home/SearchBar";
+import Sidebar from "../components/Home/Sidebar";
 
 function Home() {
   const { error, loading, data } = useQuery(GET_ALL_JOBS, {
@@ -29,10 +30,10 @@ function Home() {
     }
   }, [data]);
 
-  console.log(selected);
   return (
     <div className="flex justify-center h-screen">
-      <div className="flex flex-col w-1/2 justify-center">
+      <Sidebar />
+      <div className="flex flex-col items-center w-1/2 justify-center">
         <SearchBar jobs={jobs} setJobs={setJobs} />
         <JobPostings
           jobs={jobs}
