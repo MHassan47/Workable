@@ -13,7 +13,6 @@ interface Job {
 const JobDetails: FC<{ job: Job }> = ({ job }) => {
   const [saveJob, { error }] = useMutation(SAVEJOB);
   const saveJobHandler = () => {
-    // console.log(job.id);
     saveJob({
       variables: {
         jobId: job.id,
