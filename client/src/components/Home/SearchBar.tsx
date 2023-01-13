@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useLazyQuery } from "@apollo/client";
 import { SEARCHJOBS } from "../../GraphQL/Queries";
-
+import { BiSearchAlt2 } from "react-icons/bi";
 interface Job {
   id: number;
   company: string;
@@ -32,22 +32,24 @@ const SearchBar: React.FC<Props> = ({ jobs, setJobs }) => {
   };
 
   return (
-    <div className="w-2/3 mb-6">
-      <div className="flex flex-row border-2 p-2 rounded-xl">
+    <div className=" w-2/5 mb-6">
+      <div className="flex justify-evenly flex-row border-2  p-2 rounded-xl focus:bg-blue-400 ">
         <form onSubmit={handleSearch}>
           <input
             type="text"
-            placeholder="Search for job title, company or location..."
+            placeholder="job title, company, location"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="outline-none "
           />
-          <button type="submit">Search</button>
         </form>
+        <button type="submit">
+          <BiSearchAlt2 />
+        </button>
       </div>
-      {/* <div className="ml-2 mt-2">
+      <div className="ml-2 mt-2">
         {jobs.length} {jobs && jobs.length > 1 ? "results" : "result"}{" "}
-      </div> */}
+      </div>
     </div>
   );
 };
