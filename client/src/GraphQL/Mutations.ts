@@ -30,3 +30,23 @@ export const SAVEJOB = gql`
     saveJobPost(jobId: $jobId)
   }
 `;
+
+export const CREATE_JOB = gql`
+  mutation CreateJob(
+    $company: String!
+    $title: String!
+    $description: String!
+    $salaryMinimum: Int!
+    $salaryMaximum: Int!
+    $location: String!
+  ) {
+    createJob(
+      company: $company
+      title: $title
+      description: $description
+      salaryMinimum: $salaryMinimum
+      salaryMaximum: $salaryMaximum
+      location: $location
+    )
+  }
+`;
