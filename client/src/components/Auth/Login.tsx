@@ -1,7 +1,9 @@
 import { useMutation, useQuery } from "@apollo/client";
 import { FC, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { LOGIN } from "../../GraphQL/Mutations";
 function Login() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   // const [error, setError] = useState(false);
@@ -10,6 +12,7 @@ function Login() {
     onCompleted: (data) => {
       localStorage.setItem("authorization", data.login.accessToken);
       localStorage.setItem("userId", data.login.user);
+      navigate("/home");
     },
   });
 
