@@ -4,7 +4,7 @@ import { GET_ALL_JOBS } from "../GraphQL/Queries";
 import JobDetails from "../components/Home/JobDetails";
 import JobPostings from "../components/Home/JobPostings";
 import SearchBar from "../components/Home/SearchBar";
-import Sidebar from "../components/Home/Sidebar";
+import Sidebar from "../components/Sidebar/Sidebar";
 
 function Home() {
   const { error, loading, data } = useQuery(GET_ALL_JOBS, {
