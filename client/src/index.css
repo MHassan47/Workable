@@ -24,13 +24,13 @@ header {
   in webkit browsers (Chrome, Safari, etc.)
 */
 ::-webkit-scrollbar {
-  width: 0.5rem; /* Adjust the width of the scrollbar */
+  width: 0.4rem; /* Adjust the width of the scrollbar */
   background-color: transparent; /* Change the background color */
 }
 
 ::-webkit-scrollbar-thumb {
   border-radius: 1rem; /* Add rounded corners to the thumb */
-  background-color: #a0aec0; /* Change the thumb color */
+  background-color: rgb(163 163 163); /* Change the thumb color */
 }
 
 ::-webkit-scrollbar-thumb:hover {
