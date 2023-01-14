@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { Job } from "../../pages/Saved";
-
+import { useMutation } from "@apollo/client";
+import { CREATE_JOB } from "../../GraphQL/Mutations";
 const JobForm: React.FC = () => {
+  const [createJob, { error }] = useMutation(CREATE_JOB);
   const [formData, setFormData] = useState({
     company: "",
     title: "",
@@ -13,13 +15,31 @@ const JobForm: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    createJob({
+      variables: {
+        company: formData.company,
+        title: formData.title,
+        description: Number(formData.description),
+        salaryMinimum: Number(formData.salaryMinimum),
+        salaryMaximum: formData.salaryMaximum,
+        location: formData.location,
+      },
+    });
+    if (error) {
+      console.log(error);
+    }
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (
+    e:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
+  console.log(typeof formData.salaryMaximum);
   return (
     <form
       onSubmit={handleSubmit}
@@ -53,8 +73,8 @@ const JobForm: React.FC = () => {
         name="description"
         required
         value={formData.description}
-        // onChange={handleInputChange}
-        className="border-2 m-2 border-zinc-300 rounded-lg w-2/3 h-1/5 p-2"
+        onChange={handleInputChange}
+        className="border-2 m-2 border-zinc-300 rounded-lg w-5/6 h-1/5 p-2"
       />
       <br />
       <label className="font-semibold text-lg">Salary Minimum</label>
