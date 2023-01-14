@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useLazyQuery } from "@apollo/client";
-import { SEARCHJOBS } from "../../GraphQL/Queries";
+import { SEARCH_JOBS } from "../../GraphQL/Queries";
 import { BiSearchAlt2 } from "react-icons/bi";
 interface Job {
   id: number;
@@ -19,7 +19,7 @@ interface Props {
 
 const SearchBar: React.FC<Props> = ({ jobs, setJobs }) => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [searchJobs, { error, data, loading }] = useLazyQuery(SEARCHJOBS, {
+  const [searchJobs, { error, data, loading }] = useLazyQuery(SEARCH_JOBS, {
     onCompleted: (data) => {
       if (data.searchJobs) setJobs(data.searchJobs);
       //   console.log(data.searchJobs);
