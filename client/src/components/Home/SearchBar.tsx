@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useLazyQuery } from "@apollo/client";
 import { SEARCH_JOBS } from "../../GraphQL/Queries";
 import { BiSearchAlt2 } from "react-icons/bi";
+import { HiOutlineAdjustmentsVertical } from "react-icons/hi2";
 interface Job {
   id: number;
   company: string;
@@ -47,8 +48,13 @@ const SearchBar: React.FC<Props> = ({ jobs, setJobs }) => {
           <BiSearchAlt2 />
         </button>
       </div>
-      <div className="ml-2 mt-2">
-        {jobs.length} {jobs && jobs.length > 1 ? "results" : "result"}{" "}
+      <div className="flex flex-row justify-between ml-2 mt-2">
+        <div className="">
+          {jobs.length} {jobs && jobs.length > 1 ? "results" : "result"}{" "}
+        </div>
+        <div className="flex flex-row items-center gap-x-2 cursor-pointer">
+          Advanced Search <HiOutlineAdjustmentsVertical className="text-xl" />
+        </div>
       </div>
     </div>
   );
