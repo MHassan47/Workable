@@ -3,6 +3,7 @@ import Login from "../src/components/Auth/Login";
 import Register from "../src/components/Auth/Register";
 import JobPostings from "./components/Home/JobPostings";
 import Home from "./pages/Home";
+import Saved from "./pages/Saved";
 function App() {
   return (
     <div className="App">
@@ -11,6 +12,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/saved" element={<Saved />} />
       </Routes>
     </div>
   );
