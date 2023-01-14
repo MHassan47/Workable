@@ -35,7 +35,10 @@ const Sidebar: FC = () => {
               Top Companies
             </span>
           </div>
-          <div className="flex items-center mt-4 text-zinc-700  cursor-pointer mb-10">
+          <div
+            className="flex items-center mt-4 text-zinc-700  cursor-pointer mb-10"
+            onClick={() => navigate("/create")}
+          >
             <IoCreateOutline className="text-2xl mr-4 text-zinc-600" />
             <span className="text-lg font-semibold hover:text-blue-600">
               Post Job
