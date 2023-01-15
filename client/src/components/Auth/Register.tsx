@@ -38,7 +38,7 @@ function Register() {
 
   return (
     <div className=" flex flex-col justify-center items-center  w-4/6  h-screen">
-      <h1 className="text-3xl font-bold text-sky-400 text-left mb-12">
+      <h1 className="text-3xl font-bold text-blue-600 text-left mb-12">
         Register
       </h1>
       <input
@@ -84,7 +84,7 @@ function Register() {
       </a>
       <button
         onClick={onSubmitHandler}
-        className="bg-sky-600 h-10 w-20 rounded-lg mt-10"
+        className="bg-blue-600 hover:bg-blue-500 h-10 w-20 rounded-lg mt-10 font-semibold text-white"
       >
         Sign In
       </button>
