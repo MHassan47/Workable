@@ -46,4 +46,8 @@ export class Job extends BaseEntity {
 
   @ManyToMany(() => User, (user: User) => user.job)
   user: Array<User>;
+
+  // @Column({ type: "timestamp" })
+  // @Field(() => Date)
+  // createdAt: Date;
 }
