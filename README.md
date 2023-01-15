@@ -4,7 +4,7 @@ A Job board that allows users to create, save or apply for job postings, search 
 
 ## Tech Stack
 
-### TypeScript · React.js · GraphQL · TypeORM · TailWindCSS ·NodeJS · ExpressJS · PostgresQL · Apollo
+### TypeScript · React.js · GraphQL · TypeORM · TailWindCSS · NodeJS · ExpressJS · PostgresQL · Apollo
 
 ![The home page!](https://github.com/MHassan47/Workable/blob/master/client/src/assets/workable_home.JPG?raw=true)
 
@@ -20,24 +20,23 @@ A Job board that allows users to create, save or apply for job postings, search 
 
 Users are able to:
 
-Register, login and logout securely
-Create, apply and save jobs
-Search for jobs by company, title or location
+· Register, login and logout securely  
+· Create, apply and save jobs  
+· Search for jobs by company, title or location
 
 # Setup
 
 Clone repo
-Rename the .envexample to .env and add your MONGO_URI
 
 The project is made up of two running servers:
 
-Client Server:
+### Client Server:
 
 Cd into client directory
 Install dependencies using npm install
 Start the server with `npm start` command
 
-Backend Server:
+### Backend Server:
 
 Cd into server directory
 Install dependencies using npm install
