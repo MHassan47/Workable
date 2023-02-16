@@ -34,8 +34,8 @@ const SearchBar: React.FC<Props> = ({ jobs, setJobs }) => {
 
   return (
     <div className=" w-2/5 mb-6">
-      <div className="flex justify-evenly flex-row border-2  p-2 rounded-xl focus:bg-blue-400 ">
-        <form onSubmit={handleSearch}>
+      <div className="flex justify-evenly flex-row border-2  py-2 px-6 rounded-xl focus:bg-blue-400 ">
+        <form onSubmit={handleSearch} className="flex-1">
           <input
             type="text"
             placeholder="job title, company, location"
