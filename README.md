@@ -1,6 +1,6 @@
 # Workable
 
-A job board that allows users to create, save or apply for job postings, search for ideal jobs by title, location, or company!
+A job board that allows users to create, save or apply for job postings, search for ideal jobs by title, location, or company
 
 ## Tech Stack
 
